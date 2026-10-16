@@ -132,7 +132,7 @@ Aunque la consulta necesita combinar información de cuatro tablas, el administr
 
 El próximo paso es aprender a crear estas tablas y a relacionarlas en PostgreSQL, para luego conectarlas con una aplicación Spring Boot. Con esto, la arquitectura de nuestros proyectos quedarían así:
 
-![Diagrama de arquitectura](/clase1/assets/1-arquitectura.jpg)
+![Diagrama de arquitectura](/clase1/assets/parte1/1-arquitectura.jpg)
 
 La arquitectura que ya conocen no desaparece. Lo que cambia es la manera en que el repositorio accede a los datos.
 
@@ -154,10 +154,10 @@ PostgreSQL es un sistema gestor de bases de datos relacionales. Nos permite alma
 
 Para esta clase utilizaremos dos herramientas:
 
-| Herramienta | Función |
-|---|---|
-| PostgreSQL | Es el sistema que administra y almacena los datos. |
-| pgAdmin 4 | Es una herramienta gráfica que permite conectarse a PostgreSQL, crear bases de datos, ejecutar SQL y consultar resultados sin necesidad de instalar un editor adicional. |
+| Herramienta | Función                                                                                                                                                                  |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| PostgreSQL  | Es el sistema que administra y almacena los datos.                                                                                                                       |
+| pgAdmin 4   | Es una herramienta gráfica que permite conectarse a PostgreSQL, crear bases de datos, ejecutar SQL y consultar resultados sin necesidad de instalar un editor adicional. |
 
 ## 2. PostgreSQL
 
@@ -173,16 +173,15 @@ pgAdmin 4 es la interfaz gráfica con la que administraremos el servidor y escri
 
 ## 4. Diferencia entre PostgreSQL y pgAdmin 4
 
-| Característica | PostgreSQL | pgAdmin 4 |
-|---|---|---|
-| Tipo de herramienta | Sistema gestor de bases de datos | Interfaz gráfica de administración |
-| Almacena los datos | Sí | No; permite administrarlos a través de PostgreSQL |
-| Ejecuta consultas SQL | Sí | Permite escribirlas y enviarlas al servidor |
-| Crea y administra tablas | Sí | Permite hacerlo mediante su interfaz y el editor SQL |
-| Requiere el servidor PostgreSQL | Es el propio servidor gestor | Sí, para conectarse y trabajar con sus bases de datos |
+| Característica                  | PostgreSQL                       | pgAdmin 4                                             |
+| ------------------------------- | -------------------------------- | ----------------------------------------------------- |
+| Tipo de herramienta             | Sistema gestor de bases de datos | Interfaz gráfica de administración                    |
+| Almacena los datos              | Sí                               | No; permite administrarlos a través de PostgreSQL     |
+| Ejecuta consultas SQL           | Sí                               | Permite escribirlas y enviarlas al servidor           |
+| Crea y administra tablas        | Sí                               | Permite hacerlo mediante su interfaz y el editor SQL  |
+| Requiere el servidor PostgreSQL | Es el propio servidor gestor     | Sí, para conectarse y trabajar con sus bases de datos |
 
 **Importante:** pgAdmin 4 no reemplaza a PostgreSQL. Es la herramienta que utilizaremos para interactuar visualmente con el sistema gestor de bases de datos.
-
 
 ## Paso 1. Descargar el instalador
 
@@ -255,14 +254,14 @@ Conserva ese valor, a menos que ya exista otra instalación de PostgreSQL que lo
 
 El puerto permite que las aplicaciones, como Spring Boot, se comuniquen con el servidor de base de datos.
 
-| Configuración | Valor habitual | Función |
-|---|---|---|
-| Usuario administrador | `postgres` | Permite administrar PostgreSQL según los permisos asignados. |
-| Puerto | `5432` | Permite establecer conexiones con el servidor. |
-| Carpeta de instalación | `C:\Program Files\PostgreSQL\18` | Contiene los archivos de instalación del programa. |
-| Carpeta de datos | La ruta seleccionada durante la instalación | Almacena físicamente los datos administrados por PostgreSQL. |
+| Configuración          | Valor habitual                              | Función                                                      |
+| ---------------------- | ------------------------------------------- | ------------------------------------------------------------ |
+| Usuario administrador  | `postgres`                                  | Permite administrar PostgreSQL según los permisos asignados. |
+| Puerto                 | `5432`                                      | Permite establecer conexiones con el servidor.               |
+| Carpeta de instalación | `C:\Program Files\PostgreSQL\18`            | Contiene los archivos de instalación del programa.           |
+| Carpeta de datos       | La ruta seleccionada durante la instalación | Almacena físicamente los datos administrados por PostgreSQL. |
 
-*Nota: los valores y las rutas pueden variar según la instalación.*
+_Nota: los valores y las rutas pueden variar según la instalación._
 
 ## Paso 8. Seleccionar la configuración regional
 
