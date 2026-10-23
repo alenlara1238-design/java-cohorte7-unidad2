@@ -36,4 +36,14 @@ public class PersonaController {
     public void eliminar(@PathVariable Long cedula){
         service.eliminar(cedula);
     }
+
+    @GetMapping("/buscar")
+    public List<PersonaDTO> buscarPorNombre(@RequestParam String nombre){
+        return service.buscarPorNombre(nombre);
+    }
+
+    @GetMapping("/email")
+    public PersonaDTO  buscarPorEmail(@RequestParam String email){
+        return service.buscarPorEmail(email);
+    }
 }

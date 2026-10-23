@@ -58,4 +58,16 @@ public class PersonaService {
             dto.getEmail()
         );
     }
+
+    public List<PersonaDTO> buscarPorNombre(String nombre){
+        return repository.findByNombre(nombre).stream()
+                        .map(entity -> mapToDTO(entity))
+                        .toList();
+    }
+
+    public PersonaDTO buscarPorEmail(String email){
+        Persona persona =  repository.findByEmail(email);
+        PersonaDTO dto = mapToDTO(persona);
+        return dto;
+    }
 }
