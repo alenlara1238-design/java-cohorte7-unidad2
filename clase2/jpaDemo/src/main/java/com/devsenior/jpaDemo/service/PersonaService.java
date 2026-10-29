@@ -61,13 +61,25 @@ public class PersonaService {
 
     public List<PersonaDTO> buscarPorNombre(String nombre){
         return repository.findByNombre(nombre).stream()
-                        .map(entity -> mapToDTO(entity))
+                        .map(this::mapToDTO)
+                        .toList();
+    }
+
+    public List<PersonaDTO> buscarPorNombreContaining(String nombre){
+        return repository.findByNombreContaining(nombre).stream()
+                        .map(this::mapToDTO)
                         .toList();
     }
 
     public PersonaDTO buscarPorEmail(String email){
-        Persona persona =  repository.findByEmail(email);
-        PersonaDTO dto = mapToDTO(persona);
-        return dto;
+        Persona persona = repository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("Persona no encontrada"));
+        return mapToDTO(persona);
+    }
+
+    public List<PersonaDTO> buscarPorTelefonoStartingWith(String telefono){
+        return repository.findByTelefonoStartingWith(telefono).stream()
+                        .map(this::mapToDTO)
+                        .toList();
     }
 }

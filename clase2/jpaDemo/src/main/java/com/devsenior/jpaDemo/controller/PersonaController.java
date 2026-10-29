@@ -42,8 +42,18 @@ public class PersonaController {
         return service.buscarPorNombre(nombre);
     }
 
+    @GetMapping("/buscar/containing")
+    public List<PersonaDTO> buscarPorNombreContaining(@RequestParam String nombre){
+        return service.buscarPorNombreContaining(nombre);
+    }
+
     @GetMapping("/email")
-    public PersonaDTO  buscarPorEmail(@RequestParam String email){
+    public PersonaDTO buscarPorEmail(@RequestParam String email){
         return service.buscarPorEmail(email);
+    }
+
+    @GetMapping("/telefono")
+    public List<PersonaDTO> buscarPorTelefono(@RequestParam String prefijo){
+        return service.buscarPorTelefonoStartingWith(prefijo);
     }
 }

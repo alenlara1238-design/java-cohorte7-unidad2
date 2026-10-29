@@ -1,6 +1,7 @@
 package com.devsenior.jpaDemo.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import com.devsenior.jpaDemo.model.entity.*;
@@ -14,7 +15,7 @@ public interface PersonaRepository extends JpaRepository<Persona, Long> {
 
     List<Persona> findByNombreContaining(String nombre);
 
-    Persona findByEmail(String email);
+    Optional<Persona> findByEmail(String email);
 
     List<Persona> findByTelefonoStartingWith(String telefono);
 }
