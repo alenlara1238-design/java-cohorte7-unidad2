@@ -35,6 +35,12 @@ public class Estudiante {
         this.curso = curso;
     }
 
+    public Estudiante(String nombre, String correo, Curso curso) {
+        this.nombre = nombre;
+        this.correo = correo;
+        this.curso = curso;
+    }
+
     public Long getId() {
         return id;
     }

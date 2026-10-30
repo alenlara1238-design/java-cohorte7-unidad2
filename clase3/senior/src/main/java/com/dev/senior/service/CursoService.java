@@ -53,15 +53,13 @@ public class CursoService {
          curso.setDuracionHoras(request.getDuracionHoras()); 
          
         Curso cursoActualizado = cursoRepo.save(curso);
-        return convertirAResponseDTO(cursoActualizado);
-        
+        return convertirAResponseDTO(cursoActualizado);      
     }
 
-
     public void eliminarCurso(Long id){
-        Curso curso = cursoRepo.findById(id)
+        cursoRepo.findById(id)
         .orElseThrow(()->
-            new IllegalArgumentException("Curso con id: " + id + " no encontrado");
+            new IllegalArgumentException("Curso con id: " + id + " no encontrado")
         );
 
         cursoRepo.deleteById(id);
