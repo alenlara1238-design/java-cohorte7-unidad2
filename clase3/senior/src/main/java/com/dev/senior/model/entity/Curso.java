@@ -26,6 +26,11 @@ public class Curso {
         this.duracionHoras = duracionHoras;
     }
 
+    public Curso(String nombre, Integer duracionHoras){
+        this.nombre = nombre;
+        this.duracionHoras = duracionHoras;
+    }
+
     public Long getId() {
         return id;
     }
