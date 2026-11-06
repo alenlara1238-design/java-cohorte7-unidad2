@@ -1,6 +1,10 @@
 package com.dev.senior.model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.annotation.Generated;
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -8,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity 
@@ -16,30 +21,37 @@ public class Estudiante {
 
     @Id 
     @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @Column(name="curso_id")
     private Long id;
 
     private String nombre;
 
     private String correo;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "curso_id", nullable = false)
-    private Curso curso;
+    @OneToMany(mappedBy = "estudiante")
+    private List<Inscripcion> inscripciones = new ArrayList<>();
 
     public Estudiante(){}
 
-    public Estudiante(Long id, String nombre, String correo, Curso curso) {
+    public Estudiante(Long id, String nombre, String correo, List<Inscripcion> inscripciones) {
         this.id = id;
         this.nombre = nombre;
         this.correo = correo;
-        this.curso = curso;
+        this.inscripciones = inscripciones;
     }
 
-    public Estudiante(String nombre, String correo, Curso curso) {
+    public Estudiante(String nombre, String correo, List<Inscripcion> inscripciones ) {
         this.nombre = nombre;
         this.correo = correo;
-        this.curso = curso;
+        this.inscripciones = inscripciones;
     }
+
+    public Estudiante(String nombre, String correo ) {
+        this.nombre = nombre;
+        this.correo = correo;
+    }
+
+
 
     public Long getId() {
         return id;
@@ -65,13 +77,13 @@ public class Estudiante {
         this.correo = correo;
     }
 
-    public Curso getCurso() {
-        return curso;
-    }
+   public List<Inscripcion> getInscripciones(){
+    return this.inscripciones;
+   }
 
-    public void setCurso(Curso curso) {
-        this.curso = curso;
-    }
 
+   public void setInscripciones(List<Inscripcion> inscripciones){
+    this.inscripciones = inscripciones;
+   }
     
 }

@@ -9,19 +9,15 @@ import org.springframework.stereotype.Service;
 import com.dev.senior.model.dto.EstudianteRequestDTO;
 import com.dev.senior.model.dto.EstudianteResponseDTO;
 import com.dev.senior.model.entity.*;
-import com.dev.senior.repository.CursoRepository;
 import com.dev.senior.repository.EstudianteRepository;
 
 @Service 
 public class EstudianteService {
     private final EstudianteRepository estudianteRepository;
-    private final CursoRepository cursoRepository;
 
     public EstudianteService(
-        EstudianteRepository estudianteRepository,
-        CursoRepository cursoRepository
+        EstudianteRepository estudianteRepository
     ){
-        this.cursoRepository = cursoRepository;
         this.estudianteRepository = estudianteRepository;
     }
 
@@ -40,29 +36,21 @@ public class EstudianteService {
     public EstudianteResponseDTO crearEstudiante(
         EstudianteRequestDTO request
     ){
-        Curso curso = cursoRepository.findById(request.getCursoId())
-                        .orElseThrow(()-> 
-                            new IllegalArgumentException("Curso no encontrado con id: " + request.getCursoId())
-                    );
-
-        Estudiante estudiante = new Estudiante(
+       Estudiante estudiante = new Estudiante(
             request.getNombre(),
-            request.getCorreo(),
-            curso
-        );
+            request.getCorreo()
+       );
 
-       Estudiante estudianteCreado = estudianteRepository.save(estudiante);
+       Estudiante creado = estudianteRepository.save(estudiante);
 
-       return convertirAResponseDTO(estudianteCreado);
+       return convertirAResponseDTO(creado);
     }
 
     private EstudianteResponseDTO convertirAResponseDTO(Estudiante estudiante){
         return new EstudianteResponseDTO(
             estudiante.getId(),
             estudiante.getNombre(),
-            estudiante.getCorreo(), 
-            estudiante.getCurso().getId(),
-            estudiante.getCurso().getNombre()
+            estudiante.getCorreo()
         );
     }
 

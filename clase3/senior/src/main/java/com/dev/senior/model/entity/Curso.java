@@ -1,9 +1,14 @@
 package com.dev.senior.model.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity 
@@ -12,11 +17,15 @@ public class Curso {
 
     @Id 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="curso_id")
     private Long id;
 
     private String nombre;
 
     private Integer duracionHoras;
+
+    @OneToMany(mappedBy = "curso")
+    private List<Inscripcion> inscripciones = new ArrayList<>();
 
     public Curso(){}
 
@@ -25,6 +34,14 @@ public class Curso {
         this.nombre = nombre;
         this.duracionHoras = duracionHoras;
     }
+
+    public Curso(Long id, String nombre, Integer duracionHoras, List<Inscripcion> inscripciones) {
+        this.id = id;
+        this.nombre = nombre;
+        this.duracionHoras = duracionHoras;
+        this.inscripciones = inscripciones;
+    }
+
 
     public Curso(String nombre, Integer duracionHoras){
         this.nombre = nombre;
@@ -55,5 +72,12 @@ public class Curso {
         this.duracionHoras = duracionHoras;
     }
 
-    
+    public List<Inscripcion> getInscripciones(){
+        return this.inscripciones;
+    }
+
+    public void setInscripciones(List<Inscripcion> inscripciones){
+        this.inscripciones = inscripciones;
+    }
+
 }

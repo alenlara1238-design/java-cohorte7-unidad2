@@ -34,12 +34,12 @@ public class CursoController {
         return service.crearCurso(request);
     }
 
-    @PutMapping
+    @PutMapping("/{id}")
     public CursoResponseDTO actualizarCurso(@PathVariable Long id, @RequestBody CursoRequestDTO request){
         return service.actualizarCurso(id, request);
     }
 
-    @DeleteMapping 
+    @DeleteMapping("/{id}")
     public void eliminarCurso(@PathVariable  Long id){
         service.eliminarCurso(id);
     }
